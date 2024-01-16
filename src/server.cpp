@@ -1,6 +1,7 @@
 #include "server.h"
 #include "common.h"
 #include <QDebug>
+#include <QHostAddress>
 #include <QByteArray>
 
 Server::Server() {

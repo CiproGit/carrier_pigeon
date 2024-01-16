@@ -4,6 +4,7 @@
 #include <QThread>
 #include <QHostAddress>
 #include <QByteArray>
+#include <QString>
 
 class Sender_thread : public QThread {
 	Q_OBJECT

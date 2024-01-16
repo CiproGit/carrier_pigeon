@@ -57,7 +57,7 @@ void Carrier_pigeon::on_send_message(QString destination_string, QString message
 	QHostAddress ip_address(destination_string);
 	QByteArray outgoing_message = message_string.toUtf8();
 
-	if (ip_address.protocol() != QAbstractSocket::IPv4Protocol) { // Valid IPv4 address
+	if (ip_address.protocol() == QAbstractSocket::IPv4Protocol) { // Valid IPv4 address
 		qDebug() << "Carrier_pigeon::on_send_message: valid IPv4 address. Trying to connect to " << destination_string << "...";
 		this->window->print_console("Trying to connect to " + destination_string + "...");
 		this->client.send_message(ip_address, outgoing_message);

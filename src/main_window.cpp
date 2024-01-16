@@ -5,6 +5,7 @@
 Main_window::Main_window(QWidget *parent) : QMainWindow(parent), ui(new Ui::Main_window) {
 	ui->setupUi(this);
 
+	connect(ui->about_action, SIGNAL(triggered()), this, SLOT(show_about()));
 	connect(ui->send_button, SIGNAL(clicked()), this, SLOT(on_clicked()));
 }
 
@@ -44,4 +45,8 @@ void Main_window::print_console(QString string) const {
 void Main_window::print_ingoing(QString sender_string, QString timestamp, QString message_string) const {
 	ui->ingoing_textedit->append("<html><b>From " + sender_string + " --- " + timestamp + "</b</html>");
 	ui->ingoing_textedit->append(message_string);
+}
+
+void Main_window::show_about() {
+	this->about.show();
 }

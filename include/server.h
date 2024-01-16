@@ -2,7 +2,6 @@
 #define SERVER_H
 
 #include <QObject>
-#include <QHostAddress>
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QString>

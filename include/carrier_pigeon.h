@@ -4,8 +4,8 @@
 #include "main_window.h"
 #include "server.h"
 #include "client.h"
-#include <QString>
 #include <QObject>
+#include <QString>
 #include <QList>
 #include <QHostAddress>
 
