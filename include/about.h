@@ -2,11 +2,10 @@
 #define ABOUT_H
 
 #include <QDialog>
-#include <QObject>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class About; }
-QT_END_NAMESPACE
+namespace Ui {
+	class About;
+}
 
 class About : public QDialog {
 	Q_OBJECT

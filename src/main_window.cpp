@@ -1,19 +1,24 @@
 #include "main_window.h"
-#include "./ui_main_window.h"
+#include "ui_main_window.h"
 #include <QMessageBox>
 
 Main_window::Main_window(QWidget *parent) : QMainWindow(parent), ui(new Ui::Main_window) {
 	ui->setupUi(this);
 
 	connect(ui->about_action, SIGNAL(triggered()), this, SLOT(show_about()));
-	connect(ui->send_button, SIGNAL(clicked()), this, SLOT(on_clicked()));
+	connect(ui->settings_action, SIGNAL(triggered()), this, SLOT(show_settings()));
+	connect(ui->send_button, SIGNAL(clicked()), this, SLOT(on_send()));
 }
 
 Main_window::~Main_window() {
 	delete ui;
 }
 
-void Main_window::on_clicked() {
+Settings &Main_window::get_settings() {
+	return this->settings;
+}
+
+void Main_window::on_send() {
 	QString message_string = ui->message_textedit->toPlainText();
 	QString destination_string = QString::number(ui->destination_spinbox_1->value()) + '.' +
 								 QString::number(ui->destination_spinbox_2->value()) + '.' +
@@ -24,7 +29,7 @@ void Main_window::on_clicked() {
 		QMessageBox messageBox;
 		messageBox.setWindowTitle("Error");
 		messageBox.setIcon(QMessageBox::Warning);
-		messageBox.setText("Empty message.");
+		messageBox.setText("Empty message");
 		messageBox.exec();
 	}
 	else emit send_message(destination_string, message_string);
@@ -34,8 +39,8 @@ void Main_window::disable_gui() const {
 	ui->send_button->setEnabled(false);
 }
 
-void Main_window::print_ip_addresses(QString string) const {
-	ui->ip_textedit->appendPlainText(string);
+void Main_window::print_current_ip(QString string) const {
+	ui->ip_lineedit->setText(string);
 }
 
 void Main_window::print_console(QString string) const {
@@ -49,4 +54,8 @@ void Main_window::print_ingoing(QString sender_string, QString timestamp, QStrin
 
 void Main_window::show_about() {
 	this->about.show();
+}
+
+void Main_window::show_settings() {
+	this->settings.show();
 }

@@ -2,6 +2,7 @@
 #define MAIN_WINDOW_H
 
 #include "about.h"
+#include "settings.h"
 #include <QMainWindow>
 #include <QString>
 
@@ -15,20 +16,23 @@ class Main_window : public QMainWindow {
 private:
 	Ui::Main_window *ui;
 	About about;
+	Settings settings;
 
 private slots:
-	void on_clicked();
+	void on_send();
 
 public:
 	Main_window(QWidget *parent = nullptr);
 	~Main_window();
+	Settings &get_settings();
 	void disable_gui() const;
-	void print_ip_addresses(QString string) const; // It appends the given string in the IP addresses panel
+	void print_current_ip(QString string) const; // It prints the given string in the IP address panel
 	void print_console(QString string) const; // It appends the given string in the console panel
 	void print_ingoing(QString sender_string, QString timestamp, QString message_string) const; // It prints the ingoing message with date, time and sender in the ingoing messages panel
 
 public slots:
 	void show_about();
+	void show_settings();
 
 signals:
 	void send_message(const QString destination_string, const QString message_string);

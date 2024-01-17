@@ -27,18 +27,20 @@ QList<QHostAddress> Carrier_pigeon::get_address_list() {
 bool Carrier_pigeon::set_up() const {
 	if (this->ip_address_list.isEmpty()) { // No network interfaces
 		qDebug() << "Carrier_pigeon::set_up: no network interfaces";
-		this->window->print_ip_addresses("Error: no network interfaces");
+		this->window->print_current_ip("Error: no network interfaces");
 		this->window->disable_gui();
 
 		return false;
 	}
 	else { // There is at least one network interface
 		for (const auto &ip_address : this->ip_address_list) {
-			this->window->print_ip_addresses(ip_address.toString());
+			this->window->get_settings().print_ip_addresses(ip_address.toString());
 		}
 
-		IP_ADDRESS = this->ip_address_list.first(); // Automatically choose the first IP address
-		this->window->print_ip_addresses(IP_ADDRESS.toString());
+		// Automatically choose the first IP address
+		IP_ADDRESS = this->ip_address_list.first();
+		this->window->print_current_ip(IP_ADDRESS.toString());
+		//this->window->get_settings().select_ip_address(0);
 
 		return true;
 	}
