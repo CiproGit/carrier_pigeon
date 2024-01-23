@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QNetworkInterface>
+#include <QHostAddress>
 
 Carrier_pigeon::Carrier_pigeon(Main_window *window) {
 	this->window = window;
@@ -14,11 +15,11 @@ Carrier_pigeon::~Carrier_pigeon() {
 
 }
 
-QList<QHostAddress> Carrier_pigeon::get_address_list() {
-	QList<QHostAddress> ip_address_list;
+QList<QString> Carrier_pigeon::get_address_list() {
+	QList<QString> ip_address_list;
 
 	for (const auto &ip_address : QNetworkInterface::allAddresses()) {
-		if (!ip_address.isLoopback() && ip_address.protocol() == QAbstractSocket::IPv4Protocol) ip_address_list.push_back(ip_address);
+		if (!ip_address.isLoopback() && ip_address.protocol() == QAbstractSocket::IPv4Protocol) ip_address_list.push_back(ip_address.toString());
 	}
 
 	return ip_address_list;
@@ -30,11 +31,17 @@ void Carrier_pigeon::configure() {
 	this->settings_manager.create();
 
 	if (first_set_up) {
-		IP_ADDRESS = this->ip_address_list.first().toString(); // Automatically choose the first IP address
+		// Automatically choose the first IP address
+		IP_INDEX = 0;
+		IP_ADDRESS = this->ip_address_list.first();
+
 		this->settings_manager.save();
 		this->window->welcome();
 	}
-	else this->settings_manager.load();
+	else {
+		this->settings_manager.load();
+		IP_INDEX = this->ip_address_list.indexOf(IP_ADDRESS); // Search for the loaded IP address in the list. If the IP address is not in the list, then it is an old IP that is no longer valid and IP_INDEX is set to -1
+	}
 }
 
 bool Carrier_pigeon::set_up() {
@@ -47,15 +54,13 @@ bool Carrier_pigeon::set_up() {
 	}
 	else { // There is at least one network interface
 		for (const auto &ip_address : this->ip_address_list) {
-			this->window->get_settings()->print_ip_addresses(ip_address.toString());
+			this->window->get_settings()->print_ip_addresses(ip_address);
 		}
 
 		configure();
-
 		this->window->print_current_ip(IP_ADDRESS);
-		//this->window->get_settings()->select_ip_address(0);
 
-		connect(this->window->get_settings(), SIGNAL(apply_settings(int)), this, SLOT(on_apply_settings(int)));
+		connect(this->window->get_settings(), SIGNAL(apply_settings(int, unsigned short, int)), this, SLOT(on_apply_settings(int, unsigned short, int)));
 		return true;
 	}
 }
@@ -91,9 +96,13 @@ void Carrier_pigeon::on_message_sent(QString result_string) {
 	this->window->print_console(result_string);
 }
 
-void Carrier_pigeon::on_apply_settings(int ip_index) {
+void Carrier_pigeon::on_apply_settings(int ip_index, unsigned short port, int timeout) {
 	qDebug() << "Carrier_pigeon::on_apply_settings: IP index selected:" << ip_index;
 
-	IP_ADDRESS = this->ip_address_list.at(ip_index).toString();
+	IP_INDEX = ip_index;
+	IP_ADDRESS = this->ip_address_list.at(ip_index);
+	PORT = port;
+	TIMEOUT = timeout;
+
 	this->settings_manager.save();
 }

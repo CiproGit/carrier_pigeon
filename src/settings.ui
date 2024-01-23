@@ -47,7 +47,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="port_spinbox"/>
+           <widget class="QSpinBox" name="port_spinbox">
+            <property name="minimum">
+             <number>1024</number>
+            </property>
+            <property name="maximum">
+             <number>65535</number>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -69,7 +76,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="timeout_spinbox"/>
+           <widget class="QSpinBox" name="timeout_spinbox">
+            <property name="maximum">
+             <number>60000</number>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
