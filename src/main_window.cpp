@@ -1,4 +1,5 @@
 #include "main_window.h"
+#include "common.h"
 #include "ui_main_window.h"
 #include <QMessageBox>
 
@@ -14,8 +15,8 @@ Main_window::~Main_window() {
 	delete ui;
 }
 
-Settings &Main_window::get_settings() {
-	return this->settings;
+Settings *Main_window::get_settings() {
+	return &this->settings;
 }
 
 void Main_window::on_send() {
@@ -36,7 +37,18 @@ void Main_window::on_send() {
 }
 
 void Main_window::disable_gui() const {
+	ui->settings_action->setEnabled(false);
 	ui->send_button->setEnabled(false);
+}
+
+void Main_window::welcome() const {
+	QString message = "The following IP address has been chosen: " + IP_ADDRESS + "\nYou can change it in settings";
+
+	QMessageBox messageBox;
+	messageBox.setWindowTitle("Information");
+	messageBox.setIcon(QMessageBox::Information);
+	messageBox.setText(message);
+	messageBox.exec();
 }
 
 void Main_window::print_current_ip(QString string) const {

@@ -33,6 +33,7 @@ void Sender_thread::run() {
 		result_string = socket->errorString();
 	}
 
+	//delete socket;
 	emit message_sent(result_string);
 	exec();
 }

@@ -18,6 +18,8 @@ void Settings::on_cancel() {
 }
 
 void Settings::on_ok() {
+	int ip_index = ui->ip_listwidget->currentRow();
+
 	QMessageBox messageBox;
 	messageBox.setWindowTitle("Information");
 	messageBox.setIcon(QMessageBox::Information);
@@ -25,12 +27,13 @@ void Settings::on_ok() {
 	messageBox.exec();
 
 	this->close();
+	emit apply_settings(ip_index);
 }
 
 void Settings::print_ip_addresses(QString string) const {
 	ui->ip_listwidget->addItem(string);
 }
 
-void Settings::select_ip_address(int index) const {
-	ui->ip_listwidget->setCurrentRow(index);
+void Settings::select_ip_address(int ip_index) const {
+	ui->ip_listwidget->setCurrentRow(ip_index);
 }

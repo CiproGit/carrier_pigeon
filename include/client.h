@@ -1,7 +1,6 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <QObject>
 #include <QHostAddress>
 #include <QByteArray>
 #include <QString>

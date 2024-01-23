@@ -1,9 +1,14 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include <QHostAddress>
+#include <QString>
 
-extern QHostAddress IP_ADDRESS;
+extern const QString DEFAULT_IP_ADDRESS;
+extern const unsigned short DEFAULT_PORT;
+extern const int DEFAULT_TIMEOUT;
+
+// Application settings, shared throughout the entire program
+extern QString IP_ADDRESS;
 extern unsigned short PORT;
 extern int TIMEOUT;
 

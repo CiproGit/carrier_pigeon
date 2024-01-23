@@ -24,8 +24,9 @@ private slots:
 public:
 	Main_window(QWidget *parent = nullptr);
 	~Main_window();
-	Settings &get_settings();
+	Settings *get_settings();
 	void disable_gui() const;
+	void welcome() const;
 	void print_current_ip(QString string) const; // It prints the given string in the IP address panel
 	void print_console(QString string) const; // It appends the given string in the console panel
 	void print_ingoing(QString sender_string, QString timestamp, QString message_string) const; // It prints the ingoing message with date, time and sender in the ingoing messages panel

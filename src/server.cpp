@@ -6,6 +6,8 @@
 
 Server::Server() {
 	connect(&this->server, SIGNAL(newConnection()), this, SLOT(on_newConnection()));
+
+	this->socket = nullptr;
 }
 
 Server::~Server() {
@@ -35,6 +37,9 @@ void Server::on_new_message() {
 
 	QString sender_string = ip_address.toString();
 	QString message_string = QString(ingoing_message);
+
+	//delete this->socket;
+	//this->socket = nullptr;
 
 	emit message_received(sender_string, message_string);
 }

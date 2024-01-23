@@ -33,7 +33,7 @@
        <item>
         <widget class="QFrame" name="port_frame">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
@@ -55,7 +55,7 @@
        <item>
         <widget class="QFrame" name="timeout_frame">
          <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
+          <enum>QFrame::Panel</enum>
          </property>
          <property name="frameShadow">
           <enum>QFrame::Raised</enum>
