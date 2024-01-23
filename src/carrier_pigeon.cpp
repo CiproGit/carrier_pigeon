@@ -92,6 +92,8 @@ void Carrier_pigeon::on_message_sent(QString result_string) {
 }
 
 void Carrier_pigeon::on_apply_settings(int ip_index) {
+	qDebug() << "Carrier_pigeon::on_apply_settings: IP index selected:" << ip_index;
+
 	IP_ADDRESS = this->ip_address_list.at(ip_index).toString();
 	this->settings_manager.save();
 }
