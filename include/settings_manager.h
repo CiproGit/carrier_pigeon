@@ -20,8 +20,8 @@ public:
 	void create();
 	void destroy();
 	bool exists() const;
-	void save() const;
-	void load() const;
+	void save() const; // It saves IP address, port and timeout to the settings file
+	void load() const; // It loads IP address, port and timeout from the settings file
 };
 
 #endif // SETTINGS_MANAGER_H
