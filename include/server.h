@@ -22,7 +22,7 @@ public:
 	bool start_listening();
 
 signals:
-	void message_received(const QString sender_string, const QString message_string);
+	void message_received(QString sender_string, QString message_string);
 };
 
 #endif // SERVER_H

@@ -18,10 +18,10 @@ private:
 	Server server;
 	Client client;
 
-	Settings_manager settings_manager;
+	Settings_manager settings_manager; // To save and load IP, port and timeout settings
 
-	QList<QString> get_address_list(); // Get the list of all host IP addresses (loopback and IPv6 excluded)
-	void configure();
+	QList<QString> get_address_list(); // It gets the list of all host IP addresses (loopback and IPv6 excluded)
+	void configure(); // It creates settings file if it doesn't exist and configures IP address, port and timeout
 
 public:
 	Carrier_pigeon(Main_window *window);

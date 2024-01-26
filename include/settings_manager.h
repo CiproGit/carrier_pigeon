@@ -17,9 +17,9 @@ private:
 public:
 	Settings_manager();
 	virtual ~Settings_manager();
-	void create();
-	void destroy();
-	bool exists() const;
+	void create(); // It creates the QSettings for the settings file
+	void destroy(); // It destroys the QSettings
+	bool exists() const; // It checks the existence of the settings file
 	void save() const; // It saves IP address, port and timeout to the settings file
 	void load() const; // It loads IP address, port and timeout from the settings file
 };

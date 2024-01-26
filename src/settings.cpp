@@ -24,7 +24,7 @@ void Settings::select_ip_address() const {
 			selected_item->setSelected(false);
 		}
 	}
-	else ui->ip_listwidget->setCurrentRow(IP_INDEX);
+	else ui->ip_listwidget->setCurrentRow(IP_INDEX); // Select the current IP address
 }
 
 void Settings::on_cancel() {

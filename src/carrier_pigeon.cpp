@@ -28,7 +28,7 @@ QList<QString> Carrier_pigeon::get_address_list() {
 void Carrier_pigeon::configure() {
 	bool first_set_up = !this->settings_manager.exists(); // If the settings file does not exist, then this is the first time the application has been launched
 
-	this->settings_manager.create();
+	this->settings_manager.create(); // Create settings file if it doesn't exist
 
 	if (first_set_up) {
 		// Automatically choose the first IP address

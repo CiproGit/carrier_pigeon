@@ -26,7 +26,7 @@ public:
 	~Main_window();
 	Settings *get_settings();
 	void disable_gui() const;
-	void welcome() const;
+	void welcome() const; // It shows the chosen IP address
 	void print_current_ip(QString string) const; // It prints the given string in the IP address panel
 	void print_console(QString string) const; // It appends the given string in the console panel
 	void print_ingoing(QString sender_string, QString timestamp, QString message_string) const; // It prints the ingoing message with date, time and sender in the ingoing messages panel
@@ -36,7 +36,7 @@ public slots:
 	void show_settings();
 
 signals:
-	void send_message(const QString destination_string, const QString message_string);
+	void send_message(QString destination_string, QString message_string);
 };
 
 #endif // MAIN_WINDOW_H

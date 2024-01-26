@@ -14,7 +14,7 @@ class Settings : public QDialog {
 private:
 	Ui::Settings *ui;
 
-	void select_ip_address() const; // It highlights the current IP address
+	void select_ip_address() const; // It highlights the current IP address, if available
 
 private slots:
 	void on_cancel();
@@ -29,7 +29,7 @@ public:
 	void print_ip_addresses(QString string) const; // It appends the given string in the IP addresses panel
 
 signals:
-	void apply_settings(const int ip_index, const unsigned short port, const int timeout);
+	void apply_settings(int ip_index, unsigned short port, int timeout);
 };
 
 #endif // SETTINGS_H
