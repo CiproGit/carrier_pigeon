@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Carrier Pigeon</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../res/resources.qrc">
+    <normaloff>:/carrier_pigeon_icon.png</normaloff>:/carrier_pigeon_icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout_5" stretch="3,2">
     <item>
@@ -264,7 +268,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>24</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

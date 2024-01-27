@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Carrier Pigeon</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../res/resources.qrc">
+    <normaloff>:/carrier_pigeon_icon.png</normaloff>:/carrier_pigeon_icon.png</iconset>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -122,6 +126,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../res/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
