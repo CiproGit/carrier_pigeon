@@ -184,7 +184,7 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,1">
+          <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="2,0,1">
            <item>
             <spacer name="horizontalSpacer">
              <property name="orientation">
@@ -197,6 +197,31 @@
               </size>
              </property>
             </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="minimumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>40</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="pixmap">
+              <pixmap resource="../res/resources.qrc">:/carrier_pigeon_moving.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QPushButton" name="send_button">
@@ -264,6 +289,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../res/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
