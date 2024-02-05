@@ -12,6 +12,8 @@ Sender_thread::~Sender_thread() = default;
 
 void Sender_thread::run() {
 	QTcpSocket *socket = new QTcpSocket();
+	connect(socket, &QAbstractSocket::disconnected, socket, &QObject::deleteLater);
+
 	socket->connectToHost(this->ip_address, PORT);
 
 	QString result_string;
@@ -33,7 +35,8 @@ void Sender_thread::run() {
 		result_string = socket->errorString();
 	}
 
-	//delete socket;
+	socket->close();
+
 	emit message_sent(result_string);
 	exec();
 }

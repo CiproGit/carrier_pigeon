@@ -11,9 +11,7 @@ Carrier_pigeon::Carrier_pigeon(Main_window *window) {
 	this->ip_address_list = get_address_list();
 }
 
-Carrier_pigeon::~Carrier_pigeon() {
-
-}
+Carrier_pigeon::~Carrier_pigeon() = default;
 
 QList<QString> Carrier_pigeon::get_address_list() {
 	QList<QString> ip_address_list;

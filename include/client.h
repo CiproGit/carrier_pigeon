@@ -8,8 +8,6 @@
 class Client : public QObject {
 	Q_OBJECT
 
-private:	
-
 public:
 	Client();
 	virtual ~Client();

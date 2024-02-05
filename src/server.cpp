@@ -29,17 +29,16 @@ Server::~Server() {
 void Server::on_newConnection() {
 	this->socket = this->server.nextPendingConnection();
 	connect(this->socket, SIGNAL(readyRead()), this, SLOT(on_new_message()));
+	connect(this->socket, &QAbstractSocket::disconnected, this->socket, &QObject::deleteLater);
 }
 
 void Server::on_new_message() {
 	QByteArray ingoing_message = this->socket->readAll();
 	QHostAddress ip_address = this->socket->peerAddress();
+	this->socket->close();
 
 	QString sender_string = ip_address.toString();
 	QString message_string = QString(ingoing_message);
-
-	//delete this->socket;
-	//this->socket = nullptr;
 
 	emit message_received(sender_string, message_string);
 }
