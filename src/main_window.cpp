@@ -15,10 +15,6 @@ Main_window::~Main_window() {
 	delete ui;
 }
 
-Settings *Main_window::get_settings() {
-	return &this->settings;
-}
-
 void Main_window::on_send() {
 	QString message_string = ui->message_textedit->toPlainText();
 	QString destination_string = QString::number(ui->destination_spinbox_1->value()) + '.' +
@@ -34,6 +30,18 @@ void Main_window::on_send() {
 		messageBox.exec();
 	}
 	else emit send_message(destination_string, message_string);
+}
+
+void Main_window::show_about() {
+	this->about.show();
+}
+
+void Main_window::show_settings() {
+	this->settings.show();
+}
+
+Settings *Main_window::get_settings() {
+	return &this->settings;
 }
 
 void Main_window::disable_gui() const {
@@ -62,12 +70,4 @@ void Main_window::print_console(QString string) const {
 void Main_window::print_ingoing(QString sender_string, QString timestamp, QString message_string) const {
 	ui->ingoing_textedit->append("<html><b>From " + sender_string + " --- " + timestamp + "</b</html>");
 	ui->ingoing_textedit->append(message_string);
-}
-
-void Main_window::show_about() {
-	this->about.show();
-}
-
-void Main_window::show_settings() {
-	this->settings.show();
 }

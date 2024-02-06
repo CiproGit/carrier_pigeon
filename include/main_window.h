@@ -20,6 +20,8 @@ private:
 
 private slots:
 	void on_send();
+	void show_about();
+	void show_settings();
 
 public:
 	Main_window(QWidget *parent = nullptr);
@@ -30,10 +32,6 @@ public:
 	void print_current_ip(QString string) const; // It prints the given string in the IP address panel
 	void print_console(QString string) const; // It appends the given string in the console panel
 	void print_ingoing(QString sender_string, QString timestamp, QString message_string) const; // It prints the ingoing message with date, time and sender in the ingoing messages panel
-
-public slots:
-	void show_about();
-	void show_settings();
 
 signals:
 	void send_message(QString destination_string, QString message_string);

@@ -23,17 +23,17 @@ private:
 	QList<QString> get_address_list(); // It gets the list of all host IP addresses (loopback and IPv6 excluded)
 	void configure(); // It creates settings file if it doesn't exist and configures IP address, port and timeout
 
+private slots:
+	void on_send_message(QString destination_string, QString message_string);
+	void on_message_received(QString sender_string, QString message_string);
+	void on_message_sent(QString result_string);
+	void on_apply_settings(int ip_index, unsigned short port, int timeout);
+
 public:
 	Carrier_pigeon(Main_window *window);
 	virtual ~Carrier_pigeon();
 	bool set_up();
 	void start_up();
-
-public slots:
-	void on_send_message(QString destination_string, QString message_string);
-	void on_message_received(QString sender_string, QString message_string);
-	void on_message_sent(QString result_string);
-	void on_apply_settings(int ip_index, unsigned short port, int timeout);
 };
 
 #endif // CARRIER_PIGEON_H
