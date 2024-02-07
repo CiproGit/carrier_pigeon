@@ -6,6 +6,8 @@
 Main_window::Main_window(QWidget *parent) : QMainWindow(parent), ui(new Ui::Main_window) {
 	ui->setupUi(this);
 
+	this->setWindowTitle(APPLICATION_NAME);
+
 	connect(ui->about_action, SIGNAL(triggered()), this, SLOT(show_about()));
 	connect(ui->settings_action, SIGNAL(triggered()), this, SLOT(show_settings()));
 	connect(ui->send_button, SIGNAL(clicked()), this, SLOT(on_send()));

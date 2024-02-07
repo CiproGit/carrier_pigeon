@@ -19,6 +19,9 @@ file(GLOB SOURCES src/*.cpp src/*.ui)
 file(GLOB HEADERS include/*.h)
 set(RESOURCES res/resources.qrc) # Set Qt resources
 
+set(APPLICATION_NAME "Carrier Pigeon")
+add_compile_definitions(APPLICATION_NAME="${APPLICATION_NAME}")
+
 # Settings for Windows
 if (${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     add_compile_definitions(APP_NAME="${PROJECT_NAME}") # Name in Windows properties
@@ -46,8 +49,6 @@ add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCES} ${WIN32_RESOUR
 configure_file(config.h.in config.h) # Set config header file
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Qt6::Widgets Qt6::Network Qt6::Core)
-
-set(APPLICATION_NAME "Carrier Pigeon")
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     OUTPUT_NAME ${APPLICATION_NAME}

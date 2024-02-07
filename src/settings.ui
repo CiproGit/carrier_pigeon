@@ -10,9 +10,6 @@
     <height>300</height>
    </rect>
   </property>
-  <property name="windowTitle">
-   <string>Carrier Pigeon</string>
-  </property>
   <property name="windowIcon">
    <iconset resource="../res/resources.qrc">
     <normaloff>:/carrier_pigeon_icon.png</normaloff>:/carrier_pigeon_icon.png</iconset>

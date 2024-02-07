@@ -83,7 +83,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Carrier Pigeon</string>
+      <string>Software name</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignBottom|Qt::AlignHCenter</set>

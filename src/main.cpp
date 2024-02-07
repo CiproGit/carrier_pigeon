@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
 	QCoreApplication::setOrganizationName("Cipro");
 	QCoreApplication::setOrganizationDomain("cipro.com");
-	QCoreApplication::setApplicationName("Carrier Pigeon");
+	QCoreApplication::setApplicationName(APPLICATION_NAME);
 
 	Main_window w;
 	w.show();
