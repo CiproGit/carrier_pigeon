@@ -6,22 +6,21 @@
 
 class Settings_manager {
 private:
-	const QString SETTINGS_FILE = "settings.ini";
+	const QString FIRST_RUN_HEADER = "CARRIER_PIGEON/FIRST_RUN";
+	const bool DEFAULT_FIRST_RUN = true;
 
 	const QString IP_ADDRESS_HEADER = "CARRIER_PIGEON/IP_ADDRESS";
 	const QString PORT_HEADER = "CARRIER_PIGEON/PORT";
 	const QString TIMEOUT_HEADER = "CARRIER_PIGEON/TIMEOUT";
 
-	QSettings *settings;
+	QSettings settings;
 
 public:
 	Settings_manager();
 	virtual ~Settings_manager();
-	void create(); // It creates the QSettings for the settings file
-	void destroy(); // It destroys the QSettings
-	bool exists() const; // It checks the existence of the settings file
-	void save() const; // It saves IP address, port and timeout to the settings file
-	void load() const; // It loads IP address, port and timeout from the settings file
+	bool check_first_run(); // It checks if the application is launched for the first time and it updates the state in the settings file
+	void save(); // It saves IP address, port and timeout to the settings file
+	void load(); // It loads IP address, port and timeout from the settings file
 };
 
 #endif // SETTINGS_MANAGER_H

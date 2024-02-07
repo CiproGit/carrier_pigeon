@@ -24,11 +24,7 @@ QList<QString> Carrier_pigeon::get_address_list() {
 }
 
 void Carrier_pigeon::configure() {
-	bool first_set_up = !this->settings_manager.exists(); // If the settings file does not exist, then this is the first time the application has been launched
-
-	this->settings_manager.create(); // Create settings file if it doesn't exist
-
-	if (first_set_up) {
+	if (this->settings_manager.check_first_run()) { // This is the first time the application has been launched
 		// Automatically choose the first IP address
 		IP_INDEX = 0;
 		IP_ADDRESS = this->ip_address_list.first();
@@ -36,7 +32,7 @@ void Carrier_pigeon::configure() {
 		this->settings_manager.save();
 		this->window->welcome();
 	}
-	else {
+	else { // This is not the first time the application has been launched
 		this->settings_manager.load();
 		IP_INDEX = this->ip_address_list.indexOf(IP_ADDRESS); // Search for the loaded IP address in the list. If the IP address is not in the list, then it is an old IP that is no longer valid and IP_INDEX is set to -1
 	}
