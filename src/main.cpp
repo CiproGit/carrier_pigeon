@@ -1,9 +1,14 @@
 #include "main_window.h"
 #include "carrier_pigeon.h"
 #include <QApplication>
+#include <QCoreApplication>
 
 int main(int argc, char *argv[]) {
 	QApplication a(argc, argv);
+	QCoreApplication::setOrganizationName("Cipro");
+	QCoreApplication::setOrganizationDomain("cipro.com");
+	QCoreApplication::setApplicationName(APPLICATION_NAME);
+
 	Main_window w;
 	w.show();
 

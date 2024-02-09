@@ -4,6 +4,7 @@
 #include <QThread>
 #include <QHostAddress>
 #include <QByteArray>
+#include <QString>
 
 class Sender_thread : public QThread {
 	Q_OBJECT
@@ -18,7 +19,7 @@ public:
 	void run() override;
 
 signals:
-	void message_sent(const QString result_string);
+	void message_sent(QString result_string);
 };
 
 #endif // SENDER_THREAD_H

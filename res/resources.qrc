@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>carrier_pigeon_icon.png</file>
+        <file>carrier_pigeon_moving.png</file>
+    </qresource>
+</RCC>

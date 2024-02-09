@@ -2,13 +2,9 @@
 #include "sender_thread.h"
 #include <QDebug>
 
-Client::Client() {
+Client::Client() = default;
 
-}
-
-Client::~Client() {
-
-}
+Client::~Client() = default;
 
 void Client::send_message(QHostAddress ip_address, QByteArray outgoing_message) const {
 	Sender_thread *sender_thread = new Sender_thread(ip_address, outgoing_message);
