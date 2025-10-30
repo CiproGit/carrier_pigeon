@@ -5,7 +5,7 @@
 ## Description
 **Carrier Pigeon** is a peer-to-peer application that allows to exchange text messages between hosts in the same subnet.
 
-The software was created with the aim of allowing rapid disposable communications between hosts in a private environment without using the Internet. Therefore hosts are identified by IP address and messages are not stored on disk in any way.
+The software was created with the aim of allowing rapid disposable communications between hosts in a private environment without using Internet. Therefore hosts are identified by IP address and messages are not stored on disk in any way.
 
 <img src="res/screenshots/main.png"/>
 
